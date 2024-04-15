@@ -9,7 +9,6 @@
 - ⚡️ [Vue 3](https://github.com/vuejs/core), [Vite](https://github.com/vitejs/vite), [pnpm](https://pnpm.io/), [esbuild](https://github.com/evanw/esbuild) - 就是快！
 - 🔥 最新语法 - `<script lang="ts" setup>` 语法
 - 🎨 [UnoCSS](https://unocss.dev/) - 高性能且极具灵活性的即时原子化 CSS 引擎
-- 😃 [UnoCSS Icons](https://unocss.dev/presets/icons) & [icones](https://icones.js.org/) - 海量图标供你选择
 - 🍍 [pinia](https://pinia.vuejs.org/) & [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/zh/guide/) - 全端适配的全局数据管理
 - 🗂 `uni.request` 请求封装 - 一键引入，快捷使用
 - 📦 [组件自动化加载](./src/components) - 可配置化的组件加载方式，轻松加载组件
