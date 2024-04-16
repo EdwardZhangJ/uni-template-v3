@@ -15,7 +15,6 @@ module.exports = {
     // 1. 接入 prettier 的规则
     'prettier',
     'plugin:prettier/recommended',
-    './.eslintrc-auto-import.json',
   ],
   overrides: [
     {
@@ -36,10 +35,9 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
     'vue',
-    // 2. 加入 prettier 的 eslint 插件
     'prettier',
     // eslint-import-resolver-typescript 插件，@see https://www.npmjs.com/package/eslint-import-resolver-typescript
-    // 'import',
+    'import',
   ],
   rules: {
     // eslint（https://eslint.bootcss.com/docs/rules/）
@@ -81,13 +79,10 @@ module.exports = {
     },
   },
   globals: {
-    $t: true,
     uni: true,
     UniApp: true,
     wx: true,
-    WechatMiniprogram: true,
     getCurrentPages: true,
-    UniHelper: true,
     Page: true,
     App: true,
     NodeJS: true,

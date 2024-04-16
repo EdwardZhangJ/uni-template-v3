@@ -5,6 +5,8 @@
       <text class="title">{{ title }}</text>
     </view>
     <view class="text-red text-4">wwww</view>
+
+    <van-button type="primary">Button</van-button>
   </view>
 </template>
 
