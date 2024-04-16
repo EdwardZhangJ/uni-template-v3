@@ -39,6 +39,7 @@
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "type-check": "vue-tsc --noEmit",
+    "husky": "husky install",
     "lint": "lint-staged",
     "eslint": "eslint --ext .ts,.vue src"
   },
@@ -69,6 +70,8 @@
     "vue-i18n": "^9.1.9"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
     "@dcloudio/types": "^3.4.8",
     "@dcloudio/uni-automator": "3.0.0-4000720240327002",
     "@dcloudio/uni-cli-shared": "3.0.0-4000720240327002",
