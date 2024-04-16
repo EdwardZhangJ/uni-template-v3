@@ -1,7 +1,6 @@
-import type { App } from 'vue'
-import { createPinia } from 'pinia'
-import { createPersistedState } from 'pinia-plugin-persistedstate' // 数据持久化
-
+import type {App} from 'vue'
+import {createPinia} from 'pinia'
+import {createPersistedState} from 'pinia-plugin-persistedstate' // 数据持久化
 
 export function setupStore(app: App) {
   const pinia = createPinia()
@@ -11,9 +10,9 @@ export function setupStore(app: App) {
         getItem: uni.getStorageSync,
         setItem: uni.setStorageSync,
       },
-    }),
+    })
   )
   app.use(pinia)
-
-
 }
+
+export * from './modules'
