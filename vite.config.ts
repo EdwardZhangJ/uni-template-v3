@@ -3,7 +3,7 @@ import {defineConfig, loadEnv} from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 
 // @see https://unocss.dev/
-// import UnoCSS from 'unocss/vite'
+import UnoCSS from 'unocss/vite'
 
 import {VantResolver} from '@vant/auto-import-resolver'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -17,7 +17,7 @@ export default ({command, mode}) => {
     envDir: './env', // 自定义env目录
     plugins: [
       uni(),
-      // UnoCSS(),
+      UnoCSS(),
       AutoImport({
         resolvers: [VantResolver()],
       }),

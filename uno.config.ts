@@ -1,18 +1,38 @@
 // uno.config.ts
-import {
-  Preset,
-  defineConfig,
-  presetAttributify,
-  presetIcons,
-  transformerDirectives,
-  transformerVariantGroup,
-} from 'unocss'
+import type {Preset, SourceCodeTransformer} from 'unocss'
+import {defineConfig, presetAttributify, presetIcons, transformerDirectives, transformerVariantGroup} from 'unocss'
 
-import {presetApplet, presetRemRpx, transformerApplet, transformerAttributify} from 'unocss-applet'
+import {presetApplet, presetRemRpx, transformerAttributify} from 'unocss-applet'
+
+const presets: Preset[] = []
+const transformers: SourceCodeTransformer[] = []
+
+// uni-app
+const isApplet = process.env?.UNI_PLATFORM?.startsWith('mp-') ?? false
+const isH5 = process.env?.UNI_PLATFORM === 'h5'
+
+if (isApplet) {
+  transformers.push(
+    transformerAttributify({
+      // 解决与第三方框架样式冲突问题
+      prefixedOnly: true,
+      prefix: 'fg',
+    })
+  )
+} else {
+  presets.push(presetAttributify())
+}
+
+if (!isH5) {
+  presets.push(presetRemRpx())
+}
 
 export default defineConfig({
   presets: [
-    // 支持图标，需要搭配图标库，eg: @iconify-json/carbon, 使用 `<button class="i-carbon-sun dark:i-carbon-moon" />`
+    // The default preset for UnoCSS.
+    ...presets,
+    presetApplet({enable: !isH5}),
+    presetAttributify(),
     presetIcons({
       scale: 1.2,
       warn: true,
@@ -26,20 +46,16 @@ export default defineConfig({
    * 自定义快捷语句
    * @see https://github.com/unocss/unocss#shortcuts
    */
-  shortcuts: [['center', 'flex justify-center items-center']],
+  shortcuts: [
+    ['center', 'flex justify-center items-center'],
+    ['border', 'border border-solid'],
+  ],
   transformers: [
+    ...transformers,
     // 启用 @apply 功能
     transformerDirectives(),
     // 启用 () 分组功能
-    // 支持css class组合，eg: `<div class="hover:(bg-gray-400 font-medium) font-(light mono)">测试 unocss</div>`
     transformerVariantGroup(),
-    // Don't change the following order
-    transformerAttributify({
-      // 解决与第三方框架样式冲突问题
-      prefixedOnly: true,
-      prefix: 'fg',
-    }),
-    transformerApplet(),
   ],
   rules: [
     [
@@ -55,7 +71,6 @@ export default defineConfig({
 })
 
 /**
- * 最终这一套组合下来会得到：
  * mp 里面：mt-4 => margin-top: 32rpx
  * h5 里面：mt-4 => margin-top: 1rem
  */
