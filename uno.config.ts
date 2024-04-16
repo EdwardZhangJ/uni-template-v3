@@ -32,7 +32,6 @@ export default defineConfig({
     // The default preset for UnoCSS.
     ...presets,
     presetApplet({enable: !isH5}),
-    // presetAttributify(),
     presetIcons({
       scale: 1.2,
       warn: true,
